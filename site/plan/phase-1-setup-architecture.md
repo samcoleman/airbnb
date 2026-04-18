@@ -1,7 +1,7 @@
 # Phase 1: Project Setup & Architecture
 
 ## Overview
-Set up the project structure, development environment, and core architecture for the SolidJS + Fastify + oRPC captive portal with UniFi integration.
+Set up project structure, dev environment, and core architecture.
 
 ## Steps
 
@@ -16,56 +16,41 @@ Set up the project structure, development environment, and core architecture for
 - [ ] Configure Git workflow and ignore patterns
 
 ## Status
-
 Current phase status: Not Started
-
 Last updated: April 18, 2026
-
-## Known Issues / Bugs
-
-No issues encountered yet.
 
 ## Architecture Decisions
 
-### Tech Stack Confirmed
-- **Frontend**: SolidJS + TypeScript + Vite
-- **Backend**: Fastify + TypeScript + oRPC
-- **Type Safety**: oRPC for end-to-end type safety
-- **Database**: SQLite with Drizzle ORM (for storing captured emails)
-- **Containerization**: Docker + Docker Compose
-- **Validation**: Zod schemas
+### Tech Stack
+- Frontend: SolidJS + TypeScript + Vite
+- Backend: Fastify + TypeScript + oRPC
+- Type Safety: oRPC for end-to-end type safety
+- Database: SQLite with Drizzle ORM
+- Container: Docker + Docker Compose
 
 ### Project Structure
 ```
 site/
-├── backend/          # Fastify + oRPC backend
+├── backend/      # Fastify + oRPC backend
 │   ├── src/
-│   │   ├── routes/   # oRPC router procedures
-│   │   ├── services/ # Business logic (UniFi integration)
-│   │   ├── db/       # Database setup and migrations
-│   │   └── types/    # Shared TypeScript types
-│   ├── package.json
-│   └── tsconfig.json
-├── frontend/         # SolidJS frontend
+│   │   ├── routes/   # oRPC procedures
+│   │   ├── services/ # UniFi integration
+│   │   ├── db/       # Database setup
+│   │   └── types/    # Shared types
+├── frontend/     # SolidJS frontend
 │   ├── src/
 │   │   ├── components/
 │   │   ├── pages/
-│   │   ├── lib/      # oRPC client setup
-│   │   └── styles/
-│   ├── package.json
-│   └── tsconfig.json
-├── plan/             # Planning and documentation
-├── docker-compose.yml
-└── Dockerfile
+│   │   └── lib/      # oRPC client
+└── plan/         # Planning docs
 ```
 
 ## UniFi External Portal Flow
 
-1. Device connects to guest network
-2. DHCP assigns IP, DNS redirects to UniFi controller
-3. UniFi redirects to external portal URL
-4. Our SolidJS portal loads (email capture + terms + password)
-5. Form submits to Fastify backend via oRPC
-6. Backend validates with UniFi controller API
-7. On success, redirect to welcome page
-8. UniFi authorizes client for internet access
+1. Device connects → DHCP assigns IP → DNS redirects to UniFi
+2. UniFi redirects to external portal URL
+3. SolidJS portal loads (email + terms + password)
+4. Form submits to Fastify via oRPC
+5. Backend validates with UniFi API
+6. On success, redirect to welcome page
+7. UniFi authorizes client for internet access
