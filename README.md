@@ -1,19 +1,18 @@
-# 37 Kings Road Airbnb Captive Portal
+# 37 Kings Road - Guest WiFi Portal
 
-UniFi captive portal for guest network.
+UniFi captive portal for guest network authentication.
 
 ## Setup
 
 ```bash
-npm install
-cp site/backend/.env.example site/backend/.env
-# Edit .env and run:
-npm run dev
+cd site
+pnpm install
+pnpm dev
 ```
 
-## Scripts
+## Docker
 
-- `npm run dev` - Development
-- `npm run build` - Build
-- `npm run docker:up` - Docker
-- `npm run docker:down` - Stop Docker
+```bash
+cd site
+docker compose up -d
+```
