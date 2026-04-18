@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  captive-portal:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./site/data:/app/site/data
+    environment:
+      - NODE_ENV=${NODE_ENV:-development}
+      - UNIFI_URL=${UNIFI_URL:-https://unifi-controller:8443}
+      - UNIFI_USER=${UNIFI_USER}
+      - UNIFI_PASSWORD=${UNIFI_PASSWORD}
+      - UNIFI_SITE=${UNIFI_SITE:-default}
+      - GUEST_PASSWORD=${GUEST_PASSWORD}
+      - PORTAL_NAME=${PORTAL_NAME:-Guest Portal}
+      - PORT=3000
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - captive-portal-network
+
+networks:
+  captive-portal-network:
+    driver: bridge
