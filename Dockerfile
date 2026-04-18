@@ -5,16 +5,13 @@ RUN apk add --no-cache python3 make g++
 
 WORKDIR /app
 
-# Copy root package files
+# Copy package files
 COPY package*.json ./
-RUN npm ci
-
-# Copy workspace packages
 COPY site/backend/package.json ./site/backend/
 COPY site/frontend/package.json ./site/frontend/
 
-# Install workspace dependencies
-RUN npm ci --workspace=site/backend --workspace=site/frontend
+# Install dependencies
+RUN npm ci --include=dev
 
 # Copy source files
 COPY site/ ./site/
@@ -38,6 +35,12 @@ WORKDIR /app
 # Copy built files
 COPY --from=builder /app/site/backend ./site/backend
 COPY --from=builder /app/site/frontend/dist ./site/frontend/dist
+COPY --from=builder /app/package*.json ./
+
+# Install only production dependencies
+RUN npm ci --omit=dev --ignore-scripts
+
+# Copy backend dependencies
 COPY --from=builder /app/site/backend/node_modules ./site/backend/node_modules
 
 # Create data directory for SQLite

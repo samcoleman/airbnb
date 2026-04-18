@@ -17,7 +17,10 @@
     "start": "npm run start --workspace=site/backend",
     "test": "npm run test --workspaces",
     "lint": "npm run lint --workspaces",
+    "lint:fix": "npm run lint:fix --workspaces",
     "typecheck": "npm run typecheck --workspaces",
+    "format": "prettier --write \"site/**/*.ts\" \"site/**/*.tsx\" \"site/**/*.ts\"",
+    "format:check": "prettier --check \"site/**/*.ts\" \"site/**/*.tsx\" \"site/**/*.ts\"",
     "docker:build": "docker-compose build",
     "docker:up": "docker-compose up -d",
     "docker:down": "docker-compose down",
@@ -36,6 +39,7 @@
   "license": "MIT",
   "devDependencies": {
     "concurrently": "^8.2.2",
+    "prettier": "^3.3.3",
     "typescript": "^5.4.5"
   },
   "engines": {
