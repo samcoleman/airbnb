@@ -1,7 +1,7 @@
 # Phase 3: Frontend Development
 
 ## Overview
-Build the SolidJS frontend with oRPC client integration, including the captive portal forms, welcome page, and responsive design.
+Build SolidJS frontend with oRPC client for captive portal.
 
 ## Steps
 
@@ -22,104 +22,71 @@ Build the SolidJS frontend with oRPC client integration, including the captive p
 - [ ] Add responsive design for mobile devices
 - [ ] Implement error handling and user feedback
 - [ ] Add loading animations and transitions
-- [ ] Optimize for captive portal constraints (offline-first, fast loading)
+- [ ] Optimize for captive portal constraints
 - [ ] Test cross-browser compatibility
 
 ## Status
-
 Current phase status: Not Started
-
 Last updated: April 18, 2026
-
-## Known Issues / Bugs
-
-No issues encountered yet.
 
 ## Page Structure
 
 ### Captive Portal Page (`/`)
-**Components:**
 - `PortalForm` - Main authentication form
 - `EmailInput` - Email capture with validation
-- `TermsCheckbox` - Terms and conditions with scrollable text
+- `TermsCheckbox` - Terms and conditions
 - `PasswordInput` - Shared password input
-- `SubmitButton` - Authentication button with loading state
+- `SubmitButton` - Authentication button
 - `ErrorDisplay` - Error message display
 
 ### Welcome Page (`/welcome`)
-**Components:**
-- `WelcomeHeader` - Welcome message and branding
+- `WelcomeHeader` - Welcome message
 - `NetworkInfo` - Connected network details
 - `HouseRules` - Summary of house rules
 - `RedirectButton` - Button to proceed to internet
-- `SessionInfo` - Session expiration and details
+- `SessionInfo` - Session expiration
 
 ## Form Validation Rules
 
 ### Email Input
-- Valid email format
-- Required field
-- Maximum length 255 characters
+- Valid email format, required, max 255 characters
 
 ### Terms Checkbox
 - Must be checked to proceed
-- Terms text must be displayed and readable
 
 ### Password Input
-- Must match configured guest password
-- Required field
-- Password masking with show/hide option
+- Must match configured guest password, required
 
 ## Captive Portal Considerations
 
 ### Network Constraints
-- **Offline-First**: Core functionality must work without internet
-- **Fast Loading**: Target < 2s initial load
-- **Small Bundle**: Minimize JavaScript bundle size
-- **Graceful Degradation**: Handle network interruptions
+- Offline-First: Core functionality works without internet
+- Fast Loading: Target < 2s initial load
+- Small Bundle: Minimize JavaScript bundle
+- Graceful Degradation: Handle network interruptions
 
 ### User Experience
-- **Clear Instructions**: Simple language, no technical terms
-- **Immediate Feedback**: Loading states, error messages
-- **Mobile First**: Optimized for phone screens
-- **Accessibility**: WCAG 2.1 AA compliance
+- Clear instructions, immediate feedback, mobile-first
+- WCAG 2.1 AA compliance
 
 ### Technical Optimizations
-- Tree-shaking for minimal bundle
-- Lazy loading of non-critical components
-- Aggressive caching strategies
+- Tree-shaking, lazy loading, aggressive caching
 - Service worker for offline capability
 
 ## Styling Approach
 
-### CSS Framework
-- Use CSS modules or styled-components for component isolation
+- CSS modules or styled-components
 - Responsive design with CSS Grid/Flexbox
 - Mobile-first approach
-- Dark mode support (optional)
-
-### Color Scheme
-- Primary: Professional blue/teal
-- Success: Green for positive actions
-- Error: Red for validation errors
-- Neutral: Gray backgrounds and text
-
-### Typography
 - System fonts for performance
-- Readable font sizes (16px base)
-- Clear visual hierarchy
-- Good contrast ratios
+- Clear visual hierarchy and contrast ratios
 
 ## Error Handling
 
 ### Client-Side Errors
-- Form validation errors
-- Network timeout handling
-- oRPC client errors
-- User input errors
+- Form validation, network timeouts, oRPC errors, user input errors
 
 ### Display Strategy
 - Clear, actionable error messages
 - Non-disruptive notifications
 - Retry mechanisms where appropriate
-- Logging for debugging
