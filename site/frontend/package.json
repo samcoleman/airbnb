@@ -13,11 +13,11 @@
   },
   "dependencies": {
     "@orpc/client": "^1.13.14",
+    "@solidjs/router": "^0.15.1",
     "solid-js": "^1.9.3",
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@solidjs/router": "^0.15.1",
     "@types/node": "^22.8.6",
     "@typescript-eslint/eslint-plugin": "^8.13.0",
     "@typescript-eslint/parser": "^8.13.0",
