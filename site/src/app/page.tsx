@@ -102,121 +102,114 @@ export default function PortalPage() {
 					</span>
 				</h1>
 				<Card className="w-full overflow-hidden border-0 p-0 shadow-xl">
-				<div className="relative h-36 w-full">
-					<img
-						src="/hero.jpg"
-						alt="Welcome"
-						className="h-full w-full object-cover object-[center_60%]"
-					/>
-					<div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-					<div className="absolute bottom-0 left-0 right-0">
-						<div className="w-full rounded-t-[20px] bg-card pb-1 pt-2"></div>
+					<div className="relative h-36 w-full">
+						<img
+							src="/hero.jpg"
+							alt="Welcome"
+							className="h-full w-full object-cover object-[center_60%]"
+						/>
+						<div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+						<div className="absolute bottom-0 left-0 right-0">
+							<div className="w-full rounded-t-[20px] bg-card pb-1 pt-2"></div>
+						</div>
 					</div>
-				</div>
 
-				<CardContent className="px-5 pb-5 pt-0">
-					<form onSubmit={handleSubmit}>
-						<FieldGroup className="gap-3">
-							<Field className="gap-1">
-								<FieldLabel htmlFor="email">Email address</FieldLabel>
-								<Input
-									id="email"
-									type="email"
-									placeholder="you@example.com"
-									value={email}
-									onChange={(e) => setEmail(e.target.value)}
-									autoComplete="email"
-								/>
-								<div className="min-h-5">
-									{errors.email && (
-										<span className="text-sm text-red-500">{errors.email}</span>
-									)}
-								</div>
-							</Field>
-
-							<Field className="gap-1">
-								<FieldLabel htmlFor="password">WiFi password</FieldLabel>
-								<Input
-									id="password"
-									type="password"
-									placeholder="Enter guest password"
-									value={password}
-									onChange={(e) => setPassword(e.target.value)}
-								/>
-								<div className="min-h-5">
-									{errors.password && (
-										<span className="text-sm text-red-500">
-											{errors.password}
-										</span>
-									)}
-								</div>
-							</Field>
-
-							<Field className="gap-1">
-								<div className="flex pl-2 items-start pt-1">
-									<Checkbox
-										id="terms"
-										checked={termsAccepted}
-										onCheckedChange={(checked) =>
-											setTermsAccepted(checked === true)
-										}
-										className="mt-0.5 "
+					<CardContent className="px-5 pb-5 pt-0">
+						<form onSubmit={handleSubmit}>
+							<FieldGroup className="gap-3">
+								<Field className="gap-1">
+									<FieldLabel htmlFor="email">Email address</FieldLabel>
+									<Input
+										id="email"
+										type="email"
+										placeholder="Email Address"
+										value={email}
+										onChange={(e) => setEmail(e.target.value)}
+										autoComplete="email"
 									/>
-									<label
-										htmlFor="terms"
-										className="text-sm pl-2 leading-snug cursor-pointer ml-1"
-										style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-									>
-										I accept the{" "}
-										<Dialog>
-											<DialogTrigger
-												className="text-sm text-primary underline underline-offset-2 hover:text-[#8E725D] transition-colors"
-												style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-											>
-												terms & conditions
-											</DialogTrigger>
-											<DialogContent
-												className={"p-0"}
-												showCloseButton={false}
-											>
-												<DialogClose className="absolute -bottom-14 left-0 right-0 z-10 hover:bg-secondary flex justify-center">
-													<div className="w-fit flex flex-row justify-center align-middle gap-4 bg-background rounded-full py-2 px-4">
-														<XIcon className="size-4 my-1" />
-														<span className="my-0.5">Close</span>
-													</div>
-												</DialogClose>
-												<div className="max-h-[min(70vh,400px)] overflow-y-auto py-2 px-4">
-													<MdxComponents />
-												</div>
-											</DialogContent>
-										</Dialog>
-									</label>
-								</div>
-								<div className="min-h-5">
-									{errors.terms && (
-										<span className="text-sm text-red-500">{errors.terms}</span>
-									)}
-								</div>
-							</Field>
+									<div className="min-h-5">
+										{errors.email && (
+											<span className="text-sm text-red-500">{errors.email}</span>
+										)}
+									</div>
+								</Field>
 
-							{		/*
-				{submitError && {/*(
-		<Alert variant="destructive">
-			<AlertDescription>{submitError}</AlertDescription>
-		</Alert>
-				)}
- */}
-							<Button
-								type="submit"
-								className="w-full text-base py-3 rounded-[10px]"
-								disabled={loading}
-							>
-								{loading ? "Connecting..." : "Connect"}
-							</Button>
-						</FieldGroup>
-					</form>
-				</CardContent>
-			</Card>
+								<Field className="gap-1">
+									<FieldLabel htmlFor="password">WiFi password</FieldLabel>
+									<Input
+										id="password"
+										type="password"
+										placeholder="Enter guest password"
+										value={password}
+										onChange={(e) => setPassword(e.target.value)}
+									/>
+									<div className="min-h-5">
+										{errors.password && (
+											<span className="text-sm text-red-500">
+												{errors.password}
+											</span>
+										)}
+									</div>
+								</Field>
+
+								<Field className="gap-1">
+									<div className="flex pl-2 items-start pt-1">
+										<Checkbox
+											id="terms"
+											checked={termsAccepted}
+											onCheckedChange={(checked) =>
+												setTermsAccepted(checked === true)
+											}
+											className="mt-0.5 "
+										/>
+										<label
+											htmlFor="terms"
+											className="text-sm pl-2 leading-snug cursor-pointer ml-1"
+											style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+										>
+											I accept the{" "}
+											<Dialog>
+												<DialogTrigger
+													className="text-sm text-primary underline underline-offset-2 hover:text-[#8E725D] transition-colors"
+													style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+												>
+													terms & conditions
+												</DialogTrigger>
+												<DialogContent
+													className={"p-0"}
+													showCloseButton={false}
+												>
+													<DialogClose className="absolute -bottom-14 left-0 right-0 z-10 flex justify-center">
+														<div className="w-fit flex flex-row justify-center align-middle gap-4 bg-background hover:bg-secondary rounded-full py-2 px-4">
+															<XIcon className="size-4 my-1" />
+															<span className="my-0.5">Close</span>
+														</div>
+													</DialogClose>
+													<div className="max-h-[min(70vh,400px)] overflow-y-auto py-2 px-4">
+														<MdxComponents />
+													</div>
+												</DialogContent>
+											</Dialog>
+										</label>
+									</div>
+									<div className="min-h-5">
+										{errors.terms && (
+											<span className="text-sm text-red-500">{errors.terms}</span>
+										)}
+									</div>
+								</Field>
+
+								<Button
+									type="submit"
+									className="w-full text-base py-3 rounded-[10px]"
+									disabled={loading}
+								>
+									{loading ? "Connecting..." : "Connect"}
+								</Button>
+							</FieldGroup>
+						</form>
+					</CardContent>
+				</Card>
 			</div>
 		</main>
 	);

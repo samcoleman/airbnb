@@ -17,6 +17,8 @@
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
     "@next/mdx": "^16.2.4",
+    "@orpc/client": "^1.14.0",
+    "@orpc/server": "^1.14.0",
     "@types/mdx": "^2.0.13",
     "better-sqlite3": "^12.9.0",
     "class-variance-authority": "^0.7.1",
