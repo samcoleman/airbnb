@@ -6,9 +6,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - portal-data:/app/data
+      - ./data:/app/data
     env_file:
       - .env
-
-volumes:
-  portal-data:
+    restart: unless-stopped
