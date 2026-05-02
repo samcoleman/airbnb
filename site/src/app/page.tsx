@@ -94,25 +94,21 @@ export default function PortalPage() {
 
 	return (
 		<main className="flex min-h-screen items-center justify-center p-6">
-			<Card className="w-full max-w-sm overflow-hidden border-0 p-0 shadow-xl">
-				<div className="relative h-48 w-full">
+			<div className="flex flex-col gap-8 w-full max-w-sm">
+				<h1 className="text-[2.5rem] font-extrabold text-foreground leading-none text-center">
+					37 Kings
+					<span className="block text-[1.75rem] font-semibold mt-1">
+						Guest WiFi
+					</span>
+				</h1>
+				<Card className="w-full overflow-hidden border-0 p-0 shadow-xl">
+				<div className="relative h-36 w-full">
 					<img
 						src="/hero.jpg"
 						alt="Welcome"
 						className="h-full w-full object-cover object-[center_60%]"
 					/>
 					<div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-					<div className="absolute top-4 left-5">
-						<h1
-							className="text-[2.5rem] font-extrabold drop-shadow-none text-white leading-none"
-							style={{ WebkitTextStroke: "1px #6D5740" }}
-						>
-							37 Kings
-							<span className="block text-[1.75rem] font-semibold mt-1">
-								Guest WiFi
-							</span>
-						</h1>
-					</div>
 					<div className="absolute bottom-0 left-0 right-0">
 						<div className="w-full rounded-t-[20px] bg-card pb-1 pt-2"></div>
 					</div>
@@ -180,14 +176,16 @@ export default function PortalPage() {
 												terms & conditions
 											</DialogTrigger>
 											<DialogContent
+												className={"p-0"}
 												showCloseButton={false}
-												className="px-4 py-0"
 											>
-												<DialogClose className="absolute top-2 right-2 z-10 p-1 hover:bg-secondary rounded-full">
-													<XIcon className="size-4" />
-													<span className="sr-only">Close</span>
+												<DialogClose className="absolute -bottom-14 left-0 right-0 z-10 hover:bg-secondary flex justify-center">
+													<div className="w-fit flex flex-row justify-center align-middle gap-4 bg-background rounded-full py-2 px-4">
+														<XIcon className="size-4 my-1" />
+														<span className="my-0.5">Close</span>
+													</div>
 												</DialogClose>
-												<div className="max-h-[min(70vh,400px)] overflow-y-auto py-3 pr-2">
+												<div className="max-h-[min(70vh,400px)] overflow-y-auto py-2 px-4">
 													<MdxComponents />
 												</div>
 											</DialogContent>
@@ -202,12 +200,12 @@ export default function PortalPage() {
 							</Field>
 
 							{		/*
-	      {submitError && {/*(
+				{submitError && {/*(
 		<Alert variant="destructive">
-		  <AlertDescription>{submitError}</AlertDescription>
+			<AlertDescription>{submitError}</AlertDescription>
 		</Alert>
-	      )}
-*/}
+				)}
+ */}
 							<Button
 								type="submit"
 								className="w-full text-base py-3 rounded-[10px]"
@@ -219,6 +217,7 @@ export default function PortalPage() {
 					</form>
 				</CardContent>
 			</Card>
+			</div>
 		</main>
 	);
 }
